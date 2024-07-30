@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { Toaster } from "sonner";
 
 // eslint-disable-next-line react/prop-types
 function MainLayout({ children }) {
@@ -7,6 +8,7 @@ function MainLayout({ children }) {
     <div>
       <Navbar />
       {children ? children : <Outlet />}
+      <Toaster richColors  />
     </div>
   );
 }

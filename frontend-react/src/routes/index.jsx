@@ -3,10 +3,8 @@ import {
   pathBuku,
   pathCustomer,
   pathPeminjaman,
-  pathPengembalian,
 } from "./constantPath";
 import Dashboard from "../pages/Dashboard";
-import Pengembalian from "../pages/pengembalian";
 import Peminjaman from "../pages/peminjaman";
 import Buku from "../pages/buku";
 import Customer from "../pages/customer";
@@ -21,27 +19,23 @@ const router = createBrowserRouter([
     path: "/",
     element: <MainLayout />,
     children: [
-        {
-            path: "/",
-            element: <Dashboard />,
-        }
+      {
+        path: "/",
+        element: <Dashboard />,
+      },
+      {
+        path: pathCustomer,
+        element: <Customer />,
+      },
+      {
+        path: pathBuku,
+        element: <Buku />,
+      },
+      {
+        path: pathPeminjaman,
+        element: <Peminjaman />,
+      },
     ],
-  },
-  {
-    path: pathCustomer,
-    element: <Customer />,
-  },
-  {
-    path: pathBuku,
-    element: <Buku />,
-  },
-  {
-    path: pathPeminjaman,
-    element: <Peminjaman />,
-  },
-  {
-    path: pathPengembalian,
-    element: <Pengembalian />,
   },
 ]);
 
