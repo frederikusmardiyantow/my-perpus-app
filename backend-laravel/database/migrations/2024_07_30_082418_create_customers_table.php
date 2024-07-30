@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('no_anggota');
             $table->string('nama');
-            $table->string('tgl_lahir');
+            $table->date('tgl_lahir');
             $table->timestamps();
         });
     }
