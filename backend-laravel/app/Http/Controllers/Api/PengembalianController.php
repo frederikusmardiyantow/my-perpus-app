@@ -16,7 +16,7 @@ class PengembalianController extends Controller
 {
     public function index()
     {
-        $pengembalian = Pengembalian::with(['peminjaman.buku', 'peminjaman.peminjam'])->get();
+        $pengembalian = Pengembalian::with(['peminjaman.buku', 'peminjaman.peminjam', 'pengembali'])->get();
 
         return response()->json([
             'success' => true,
@@ -45,8 +45,16 @@ class PengembalianController extends Controller
         if ($validate->fails()) {
             return response()->json([
                 'success' => false,
-                'message' => $validate->errors()
+                'message' => 'Gagal! Silahkan Periksa Kembali!',
+                'error' => $validate->errors()
             ], 400);
+        }
+
+        if($pengembalian->tgl_kembali != null) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Pengembalian sudah dilakukan'
+            ], 403);
         }
 
         $pengembali = Customer::find($data['id_pengembali']);

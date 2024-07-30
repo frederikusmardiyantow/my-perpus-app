@@ -33,7 +33,8 @@ class BukuController extends Controller
         if ($validate->fails()) {
             return response()->json([
                 'status' => false,
-                'message' => $validate->errors()
+                'message' => 'Gagal! Silahkan Periksa Kembali!',
+                'error' => $validate->errors()
             ], 400);
         }
 

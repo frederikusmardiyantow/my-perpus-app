@@ -17,7 +17,7 @@ class PeminjamanController extends Controller
 {
     public function index()
     {
-        $data = Peminjaman::with(['buku', 'peminjam', 'pengembalian'])->get();
+        $data = Peminjaman::with(['buku', 'peminjam', 'pengembalian.pengembali'])->get();
         return response()->json([
             'status' => true,
             'message' => 'Success',
@@ -39,7 +39,8 @@ class PeminjamanController extends Controller
         if ($validate->fails()) {
             return response()->json([
                 'success' => false,
-                'message' => $validate->errors()
+                'message' => 'Gagal! Silahkan Periksa Kembali!',
+                'error' => $validate->errors()
             ], 400);
         }
 
